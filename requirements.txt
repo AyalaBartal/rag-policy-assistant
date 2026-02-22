@@ -1,0 +1,32 @@
+# Flask web framework
+flask==3.0.0
+
+# LangChain for RAG orchestration
+langchain==0.1.0
+langchain-community==0.0.10
+
+# Vector database
+chromadb==0.4.22
+
+# Embeddings (free tier options)
+sentence-transformers==2.3.1
+
+# LLM API clients
+openai==1.10.0
+requests==2.31.0
+
+# Document processing
+pypdf==4.0.0
+beautifulsoup4==4.12.3
+markdown==3.5.2
+python-docx==1.1.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Utilities
+numpy==1.26.3
+pandas==2.2.0
+
+# Testing (optional)
+pytest==8.0.0
