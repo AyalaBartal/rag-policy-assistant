@@ -1,3 +1,10 @@
+---
+doc_id: faq
+title: FAQ
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Frequently Asked Questions (FAQ)
 
 ## General Questions

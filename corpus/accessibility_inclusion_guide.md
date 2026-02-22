@@ -1,3 +1,10 @@
+---
+doc_id: accessibility_inclusion_guide
+title: Accessibility Inclusion Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Accessibility and Inclusion Guide
 
 ## Our Commitment to Inclusion

@@ -1,3 +1,10 @@
+---
+doc_id: troubleshooting_guide
+title: Troubleshooting Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Troubleshooting Guide
 
 ## Common Issues and Solutions

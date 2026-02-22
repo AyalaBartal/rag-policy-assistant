@@ -1,3 +1,10 @@
+---
+doc_id: gift_giving_guide
+title: Gift Giving Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Gift Giving Guide
 
 ## Personalized Books as Gifts

@@ -1,3 +1,10 @@
+---
+doc_id: quality_standards
+title: Quality Standards
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Quality Standards and Production Process
 
 ## Our Quality Commitment

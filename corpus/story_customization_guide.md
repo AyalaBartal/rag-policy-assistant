@@ -1,3 +1,10 @@
+---
+doc_id: story_customization_guide
+title: Story Customization Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Story Customization Guide
 
 ## Overview

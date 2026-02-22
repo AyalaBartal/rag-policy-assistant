@@ -1,3 +1,10 @@
+---
+doc_id: educational_benefits_research
+title: Educational Benefits Research
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Educational Benefits and Research
 
 ## The Science Behind Personalized Books

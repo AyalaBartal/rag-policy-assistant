@@ -1,3 +1,10 @@
+---
+doc_id:  corpus_documentation
+title:  Corpus Documentation
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Corpus Documentation
 
 ## Overview

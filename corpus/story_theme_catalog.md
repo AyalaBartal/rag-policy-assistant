@@ -1,3 +1,10 @@
+---
+doc_id: story_theme_catalog
+title: Story Theme Catalog
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Story Theme Catalog
 
 ## Available Story Themes

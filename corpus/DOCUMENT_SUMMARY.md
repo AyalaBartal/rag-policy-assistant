@@ -1,3 +1,10 @@
+---
+doc_id: document_summary
+title: Document Corpus Summary
+version: 2.0
+last_updated: 2026-02-22
+---
+
 # Document Corpus Summary - 20 Documents
 
 ## Complete Document List

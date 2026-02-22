@@ -1,9 +1,5 @@
-# Flask web framework
+# Web framework
 flask==3.0.0
-
-# LangChain for RAG orchestration
-langchain==0.1.0
-langchain-community==0.0.10
 
 # Vector database
 chromadb==0.4.22
@@ -18,6 +14,7 @@ requests==2.31.0
 # Document processing
 pypdf==4.0.0
 beautifulsoup4==4.12.3
+lxml==5.1.0
 markdown==3.5.2
 python-docx==1.1.0
 
@@ -28,5 +25,8 @@ python-dotenv==1.0.0
 numpy==1.26.3
 pandas==2.2.0
 
-# Testing (optional)
+# Token utilities
+tiktoken==0.6.0
+
+# Testing
 pytest==8.0.0

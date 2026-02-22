@@ -1,3 +1,10 @@
+---
+doc_id: photo_upload_policy
+title: Photo Upload Policy
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Photo Upload and Image Policy
 
 ## Photo Submission Guidelines

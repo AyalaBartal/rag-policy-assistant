@@ -1,3 +1,10 @@
+---
+doc_id: privacy_policy
+title: Privacy Policy
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Privacy Policy - Custom Children's Books
 
 **Effective Date:** January 1, 2026  

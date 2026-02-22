@@ -1,3 +1,10 @@
+---
+doc_id: getting_started_guide
+title: Getting Started Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Getting Started Guide - Custom Children's Books
 
 ## Welcome to Our Personalized Story Service

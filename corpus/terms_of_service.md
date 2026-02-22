@@ -1,3 +1,10 @@
+---
+doc_id: terms_of_service
+title: Terms of Service
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Terms of Service - Custom Children's Books
 
 **Effective Date:** January 1, 2026  

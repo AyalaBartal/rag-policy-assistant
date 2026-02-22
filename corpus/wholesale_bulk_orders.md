@@ -1,3 +1,10 @@
+---
+doc_id: wholesale_bulk_orders
+title: Wholesale Bulk Orders
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Wholesale and Bulk Orders Guide
 
 ## Bulk Ordering for Organizations

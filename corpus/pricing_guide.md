@@ -1,3 +1,10 @@
+---
+doc_id: pricing_guide
+title: Pricing Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Pricing Guide and Package Comparison
 
 ## Base Book Pricing

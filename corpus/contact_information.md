@@ -1,3 +1,10 @@
+---
+doc_id: contact_information
+title: Contact Information
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Contact Information and Customer Support
 
 ## How to Reach Us

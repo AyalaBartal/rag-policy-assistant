@@ -1,3 +1,10 @@
+---
+doc_id: shipping_delivery_policy
+title: Shipping Delivery Policy
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Shipping and Delivery Policy
 
 ## Shipping Options and Rates

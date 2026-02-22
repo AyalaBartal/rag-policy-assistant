@@ -1,3 +1,9 @@
+---
+doc_id: parent_tips_best_practices
+title: Parent Tips Best Practices
+version: 1.0
+last_updated: 2026-02-22
+---
 # Parent Tips and Best Practices
 
 ## Getting the Most from Your Personalized Book

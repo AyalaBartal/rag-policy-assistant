@@ -1,3 +1,10 @@
+---
+doc_id: account_management_guide
+title: Account Management Guide
+version: 1.0
+last_updated: 2026-02-22
+---
+
 # Account Management Guide
 
 ## Creating Your Account
