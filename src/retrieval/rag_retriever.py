@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
-from src.retrival.vector_retriever import Retriever
+from src.retrieval.vector_retriever import Retriever
 
 
 DEFAULT_TOP_K = 5

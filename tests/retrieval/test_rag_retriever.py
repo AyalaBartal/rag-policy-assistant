@@ -1,4 +1,4 @@
-from src.retrival.rag_retriever import RagRetriever
+from src.retrieval.rag_retriever import RagRetriever
 
 
 class FakeRetriever:

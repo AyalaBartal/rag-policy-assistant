@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 
 import chromadb
 from chromadb.config import Settings
-from src.retrival.embedding_model import get_embedding_model
+from src.retrieval.embedding_model import get_embedding_model
 
 VECTORSTORE_DIR = Path("vectorstore")
 COLLECTION_NAME = "policy_chunks"
