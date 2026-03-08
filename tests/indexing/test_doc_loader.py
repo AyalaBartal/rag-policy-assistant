@@ -1,4 +1,4 @@
-from src.doc_loader import load_markdown_documents
+from src.indexing.doc_loader import load_markdown_documents
 
 
 def test_load_markdown_documents():

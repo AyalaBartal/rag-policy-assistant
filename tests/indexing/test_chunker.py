@@ -1,6 +1,6 @@
-from src.doc_loader import load_markdown_documents
-from src.section_splitter import split_markdown_into_sections
-from src.chunker import chunk_sections
+from src.indexing.doc_loader import load_markdown_documents
+from src.indexing.section_splitter import split_markdown_into_sections
+from src.indexing.chunker import chunk_sections
 
 
 def test_chunking_produces_chunks():

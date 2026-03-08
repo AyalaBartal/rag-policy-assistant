@@ -1,5 +1,5 @@
-from src.section_splitter import split_markdown_into_sections
-from src.doc_loader import load_markdown_documents
+from src.indexing.section_splitter import split_markdown_into_sections
+from src.indexing.doc_loader import load_markdown_documents
 
 
 def test_tables_not_destroyed():
