@@ -1,25 +1,24 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 import chromadb
 from chromadb.config import Settings
-from sentence_transformers import SentenceTransformer
+from src.retrival.embedding_model import get_embedding_model
 
 VECTORSTORE_DIR = Path("vectorstore")
 COLLECTION_NAME = "policy_chunks"
-EMBED_MODEL_NAME = "all-MiniLM-L6-v2"
 
 
 class Retriever:
-    def __init__(self):
+    def __init__(self) -> None:
         self.client = chromadb.PersistentClient(
             path=str(VECTORSTORE_DIR),
             settings=Settings(anonymized_telemetry=False),
         )
         self.collection = self.client.get_collection(COLLECTION_NAME)
-        self.model = SentenceTransformer(EMBED_MODEL_NAME)
+        self.model = get_embedding_model()
 
     def search(self, query: str, k: int = 5) -> List[Dict[str, Any]]:
         q_emb = self.model.encode([query], normalize_embeddings=True).tolist()[0]
@@ -29,12 +28,12 @@ class Retriever:
             include=["documents", "metadatas", "distances"],
         )
 
-        hits = []
+        hits: List[Dict[str, Any]] = []
         for i in range(len(res["ids"][0])):
             hits.append(
                 {
                     "id": res["ids"][0][i],
-                    "distance": res["distances"][0][i],
+                    "distance": float(res["distances"][0][i]),
                     "text": res["documents"][0][i],
                     "meta": res["metadatas"][0][i],
                 }
