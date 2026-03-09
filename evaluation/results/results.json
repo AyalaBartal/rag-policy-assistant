@@ -1,0 +1,506 @@
+{
+  "model": "openrouter/free",
+  "results": [
+    {
+      "id": "q01",
+      "category": "returns",
+      "question": "What is the return policy for unopened books?",
+      "gold_answer": "Unopened books may be returned within 14 days of delivery if they are in original condition, usually with a restocking fee.",
+      "answer": "The return policy for unopened books specifies a 20% restocking fee, customer pays return shipping, and refunds upon receipt within 7 days.",
+      "citations": [
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Customer Remorse > Unopened Books",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Customer Remorse > Opened Books",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Returns and Refunds > Can I return a personalized book?",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Digital Book Refunds > Digital Book Policy",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 8. Returns and Refunds > 8.2 Physical Books"
+      ],
+      "allowed": true,
+      "best_distance": 0.24337166547775269,
+      "latency_ms": 2704,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Answer is supported, but several extra citations are unnecessary."
+    },
+    {
+      "id": "q02",
+      "category": "returns",
+      "question": "Are opened books eligible for return?",
+      "gold_answer": "Opened books are generally not returnable, though exceptions may be handled case by case.",
+      "answer": "No, opened books are generally not returnable.",
+      "citations": [
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Customer Remorse > Opened Books",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Returns and Refunds > Can I return a personalized book?",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Customer Remorse > Unopened Books",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 8. Returns and Refunds > 8.2 Physical Books",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Digital Book Refunds > Digital Book Policy"
+      ],
+      "allowed": true,
+      "best_distance": 0.3194964528083801,
+      "latency_ms": 3398,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Main answer is correct; citation list is broader than needed."
+    },
+    {
+      "id": "q03",
+      "category": "returns",
+      "question": "How long does it take to process a refund?",
+      "gold_answer": "Approved refunds are typically processed within 5 to 7 business days.",
+      "answer": "The refund processing time depends on the type of refund and payment method:\n\n- **Standard approved refunds**: 5-7 business days to process, with an additional 3-5 business days for the amount to appear in your account (total: 4-12 business days)\n\n- **Credit card refunds**: 5-7 business days to process, 3-5 business days to return to account\n\n- **PayPal refunds**: 3-5 business days to process, 1-2 business days to return to account\n\n- **Gift card refunds**: 1-2 business days to process, immediate availability\n\nFor defective products, refunds are processed within 5-7 business days after approval. For unopened books returned by customer, refunds are processed within 7 days of receipt (minus a 20% restocking fee and return shipping costs).",
+      "citations": [
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 8. Returns and Refunds > 8.3 Refund Process",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Refund Processing > Refund Timeline",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Customer Remorse > Unopened Books",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Defective Products > Defect Return Process",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Cancellation Policy > During Production"
+      ],
+      "allowed": true,
+      "best_distance": 0.36544811725616455,
+      "latency_ms": 9188,
+      "groundedness_score": 1,
+      "citation_accuracy_score": 2,
+      "notes": "Answer is mostly supported but over-detailed compared with the gold answer."
+    },
+    {
+      "id": "q04",
+      "category": "returns",
+      "question": "Are digital books refundable after download?",
+      "gold_answer": "Digital books are generally non-refundable once downloaded, except for technical or content issues.",
+      "answer": "Based on the provided policy documents:\n\nDigital books are generally **not refundable after download**. The policy states: \"No refunds after download: Once download link is accessed, Digital content cannot be 'returned', All sales final after download.\"\n\nRefunds may be available only in specific cases, such as:\n- Technical issues that prevent access\n- Wrong book delivered digitally\n- Significant errors in content\n\nThese issues must be reported within 7 days via email to **digital@customkidsbooks.com** for troubleshooting or a refund.",
+      "citations": [
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Digital Book Refunds > Digital Book Policy",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Digital Books > Can I share my digital book?",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Returns and Refunds > Can I return a personalized book?",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Customer Remorse > Unopened Books",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Digital Books > What format are digital books?"
+      ],
+      "allowed": true,
+      "best_distance": 0.2954612374305725,
+      "latency_ms": 4508,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Answer is correct; only the first citation is really central."
+    },
+    {
+      "id": "q05",
+      "category": "shipping",
+      "question": "Do you ship internationally?",
+      "gold_answer": "Yes, international shipping is available to many countries.",
+      "answer": "Yes, international shipping is available. Sources indicate shipping to most countries, with specific regions and rates listed, and a dedicated international support contact for related inquiries. However, there are some restricted countries; customers should contact support to verify eligibility for their location.",
+      "citations": [
+        "Contact Information v1.0 (2026-02-22) – Contact Information and Customer Support > International Customers > International Support",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Shipping Costs > International Shipping",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > Shipping Options and Rates > International Shipping",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > International Shipping Details > Restricted Countries",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Production and Delivery > What shipping options are available?"
+      ],
+      "allowed": true,
+      "best_distance": 0.4651934504508972,
+      "latency_ms": 3806,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Good concise answer and relevant citations."
+    },
+    {
+      "id": "q06",
+      "category": "shipping",
+      "question": "How long does international shipping usually take?",
+      "gold_answer": "International delivery typically takes about 7 to 21 business days depending on region.",
+      "answer": "International shipping times varyby region, with typical ranges provided in the sources. Specific delivery times are:\n\n- **Canada**: 7-10 business days  \n- **Mexico**: 10-14 business days  \n- **Europe**: 10-21 business days  \n- **Asia**: 14-21 business days  \n- **Australia/NZ**: 14-21 business days  \n- **South America**: 14-28 business days  \n\nTimes are estimates and may vary due to customs processing.",
+      "citations": [
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 7. Delivery and Shipping > 7.2 Physical Books",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > Shipping Options and Rates > International Shipping",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Shipping Costs > International Shipping",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Production and Delivery > What shipping options are available?",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Shipping Costs > US Domestic Shipping"
+      ],
+      "allowed": true,
+      "best_distance": 0.34821969270706177,
+      "latency_ms": 16493,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Answer is supported; one or two citations are unnecessary."
+    },
+    {
+      "id": "q07",
+      "category": "shipping",
+      "question": "Who is responsible for customs fees on international orders?",
+      "gold_answer": "Customers are generally responsible for customs duties or import fees.",
+      "answer": "The customer is responsible for paying all customs duties and taxes on international orders.\n\nThis is explicitly stated in multiple policy sections:\n- **Customer Responsibilities**: Includes \"Paying customs duties (international orders)\" (Source 1).\n- **International Shipping Table**: Lists \"Customer responsibility\" for customs in Europe, Asia, Australia/NZ, and South America (Source 2).\n- **Customs and Duties**: Under Customer Responsibilities, it states \"Pay all customs duties and taxes\" (Source 3).\n- **International Delivery Issues**: The company is \"not responsible for... Duties and taxes charged\" (Source 4).",
+      "citations": [
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > Shipping Policy Terms > Customer Responsibilities",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > Shipping Options and Rates > International Shipping",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > International Shipping Details > Customs and Duties",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > International Shipping Details > International Delivery Issues",
+        "Contact Information v1.0 (2026-02-22) – Contact Information and Customer Support > International Customers > International Support"
+      ],
+      "allowed": true,
+      "best_distance": 0.3929716944694519,
+      "latency_ms": 8048,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Strong answer and citations directly support the claim."
+    },
+    {
+      "id": "q08",
+      "category": "shipping",
+      "question": "Do you offer free shipping?",
+      "gold_answer": "Free shipping may be available under specific order thresholds or promotions.",
+      "answer": "Yes, free shipping is offered for US domestic orders over $75. This is confirmed in multiple sources:\n\n- FAQ v1.0: \"Free shipping on orders over $75\" under US Shipping.\n- Pricing Guide v1.0: Standard method has a \"Free Threshold: Orders $75+\".\n- Shipping Delivery Policy v1.0: Lists \"Free Shipping*\" with \"*Free shipping on orders over $75\".\n\nInternational shipping does not have a free option; rates are calculated at checkout or vary by region.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Production and Delivery > What shipping options are available?",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Shipping Costs > US Domestic Shipping",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > Shipping Options and Rates > United States Domestic Shipping",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Return Shipping > Return Shipping Process",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Shipping Costs > International Shipping"
+      ],
+      "allowed": true,
+      "best_distance": 0.38531386852264404,
+      "latency_ms": 3608,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Answer is correct, but return-policy citation is not needed."
+    },
+    {
+      "id": "q09",
+      "category": "photos",
+      "question": "What file types are accepted for photo uploads?",
+      "gold_answer": "Accepted formats include common image types such as JPG, JPEG, PNG, and possibly HEIC.",
+      "answer": "JPG, JPEG, PNG, HEIC",
+      "citations": [
+        "Photo Upload Policy v1.0 (2026-02-22) – Photo Upload and Image Policy > Photo Submission Guidelines > Technical Requirements",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Technical Issues > I can't upload my photo. What's wrong?",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Photos and Customization > What photo should I upload?",
+        "Corpus Documentation v1.0 (2026-02-22) – Corpus Documentation > Document Corpus Contents > 2. Photo Upload and Image Policy (`photo_upload_policy.md`)",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 4. Intellectual Property Rights > 4.1 Your Content"
+      ],
+      "allowed": true,
+      "best_distance": 0.39631932973861694,
+      "latency_ms": 3557,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Correct answer; only the photo policy citation is really needed."
+    },
+    {
+      "id": "q10",
+      "category": "photos",
+      "question": "What are the minimum quality requirements for uploaded photos?",
+      "gold_answer": "Photos should be clear, high resolution, well lit, and show the child's face clearly.",
+      "answer": "The minimum quality requirements for uploaded photos are:  \n\n1. **Technical Specifications**  \n   - **Resolution:** Minimum **1200x1600 pixels** (portrait orientation preferred, e.g., 3:4 or 2:3 aspect ratio).  \n   - **File size:** Minimum **1MB**, maximum **10MB** per image.  \n   - **File formats:** JPG, JPEG, PNG, or HEIC.  \n   - **Color mode:** RGB color space.  \n\n2. **Photo Quality Standards**  \n   - **Clarity:** Photos must be **in focus** with **clear facial features** and **minimal shadows on the face**.  \n   - **Lighting:** Must be **well-lit** using natural or soft lighting (no harsh shadows).  \n   - **Composition:** The child (or subject) must be **front-facing**, looking directly at the camera, and the photo should show their **full face**. A **neutral or simple background** is required (heavy editing or busy backgrounds with copyrighted characters are prohibited).  \n   - **Editing:** Photos must have **minimal filters or editing** (heavy alterations are not allowed).  \n\nPhotos that do not meet these criteria (e.g., blurry, dark, low-quality, or heavily filtered images) may be rejected, and you may be asked to resubmit.  \n\n**References:**  \n- Source 1 (Technical Requirements)  \n- Source 2 (FAQ: Photo Quality and Acceptance)  \n- Source 4 (Quality Gates Checklist)  \n- Source 5 (Acceptable Photo Content Restrictions)",
+      "citations": [
+        "Photo Upload Policy v1.0 (2026-02-22) – Photo Upload and Image Policy > Photo Submission Guidelines > Technical Requirements",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Photos and Customization > What photo should I upload?",
+        "Corpus Documentation v1.0 (2026-02-22) – Corpus Documentation > Document Corpus Contents > 2. Photo Upload and Image Policy (`photo_upload_policy.md`)",
+        "Quality Standards v1.0 (2026-02-22) – Quality Standards and Production Process > Stage 1: Order Processing > Quality Gates",
+        "Photo Upload Policy v1.0 (2026-02-22) – Photo Upload and Image Policy > Photo Submission Guidelines > Acceptable Photo Content"
+      ],
+      "allowed": true,
+      "best_distance": 0.32225751876831055,
+      "latency_ms": 12261,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Detailed answer is well supported by the cited policy passages."
+    },
+    {
+      "id": "q11",
+      "category": "photos",
+      "question": "Can blurry or dark photos be used?",
+      "gold_answer": "Blurry, dark, or low-quality photos are generally discouraged or may be rejected.",
+      "answer": "Based on the retrieved sources, blurry or dark photos **cannot be used**. The guidelines explicitly state that photos rejected for quality include those that are blurry, out of focus, too dark, or poorly lit (Source 1, Source 2, Source 3). The policy emphasizes submitting clear, well-lit, front-facing photos of the child with a simple background. If a photo does not meet these standards, it will be rejected, and the user is encouraged to retake it following the provided tips.",
+      "citations": [
+        "Troubleshooting Guide v1.0 (2026-02-22) – Troubleshooting Guide > Photo Upload Issues > Problem: \"Photo rejected for quality\"",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Photos and Customization > What photo should I upload?",
+        "Photo Upload Policy v1.0 (2026-02-22) – Photo Upload and Image Policy > Photo Submission Guidelines > Acceptable Photo Content",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Photos and Customization > What if I don't have a good photo?",
+        "Parent Tips Best Practices v1.0 (2026-02-22) – Parent Tips and Best Practices > Before Ordering > Selecting the Best Photo"
+      ],
+      "allowed": true,
+      "best_distance": 0.5116514563560486,
+      "latency_ms": 7599,
+      "groundedness_score": 1,
+      "citation_accuracy_score": 2,
+      "notes": "Answer says blurry or dark photos cannot be used; docs more naturally support 'may be rejected.' Slightly overstated."
+    },
+    {
+      "id": "q12",
+      "category": "privacy",
+      "question": "How do you handle children's data under COPPA?",
+      "gold_answer": "The company states that it complies with COPPA by obtaining parental consent, limiting collection, and protecting children's information.",
+      "answer": "We handle children’s data by fully complying with COPPA. Our practices include:\n\n- **Verifiable parental consent** before any child‑specific information is collected.  \n- **Clear notice** of our data collection and usage practices.  \n- **Limited collection** to only what is necessary for creating the custom books.  \n- **Strong confidentiality and security** measures to protect that information.  \n- **Parental rights** to review, correct, and delete their child’s data.\n\nIf you have questions or need to exercise these rights, you can contact our Privacy & Security department at privacy@customkidsbooks.com or 1‑800‑KIDBOOK (option 6).",
+      "citations": [
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Children's Privacy Rights (COPPA Compliance) > What COPPA Requires",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 12. Privacy and Data Protection",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Introduction",
+        "Contact Information v1.0 (2026-02-22) – Contact Information and Customer Support > Department-Specific Contacts > Privacy and Security",
+        "Corpus Documentation v1.0 (2026-02-22) – Corpus Documentation > Document Corpus Contents > 3. Privacy Policy (`privacy_policy.md`)"
+      ],
+      "allowed": true,
+      "best_distance": 0.3212697505950928,
+      "latency_ms": 2296,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Strong answer and strong supporting citations."
+    },
+    {
+      "id": "q13",
+      "category": "privacy",
+      "question": "Can parents request deletion of their child's data?",
+      "gold_answer": "Yes, parents may request review or deletion of their child's personal information.",
+      "answer": "The sources confirm parental rights allow deletion requests. [Source 1, 2, 4].",
+      "citations": [
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Parental Consent and Control > How to Request Child Data Deletion",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Parental Consent and Control > Parental Rights",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Data Storage and Security > Data Retention",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Privacy and Security > Can I delete my child's photos?",
+        "Account Management Guide v1.0 (2026-02-22) – Account Management Guide > Managing Children Profiles > Child Profile Information"
+      ],
+      "allowed": true,
+      "best_distance": 0.38868892192840576,
+      "latency_ms": 1754,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Short but supported answer."
+    },
+    {
+      "id": "q14",
+      "category": "privacy",
+      "question": "What personal information is collected to create a personalized book?",
+      "gold_answer": "The company collects only the information necessary to personalize and deliver the book.",
+      "answer": "To create a personalized book, Custom Children's Books collects the following personal information:\n\n- Child's name (integrated into story narratives)\n- Photos (uploaded and incorporated into illustrations)\n- Age information (used for content customization)\n- Preferences (used for content customization)\n\nFor bulk/wholesale orders, additional information may be collected through a provided spreadsheet template, including individual photos and names for each child, plus any specific customizations requested.",
+      "citations": [
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 2. Service Description > 2.1 What We Provide",
+        "Educational Benefits Research v1.0 (2026-02-22) – Educational Benefits and Research > Expert Endorsements > Educators",
+        "Wholesale Bulk Orders v1.0 (2026-02-22) – Wholesale and Bulk Orders Guide > Ordering Process > Step 3: Information Collection",
+        "Educational Benefits Research v1.0 (2026-02-22) – Educational Benefits and Research > Expert Endorsements > Child Psychologists",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > How We Use Information > Children's Information"
+      ],
+      "allowed": true,
+      "best_distance": 0.3810540437698364,
+      "latency_ms": 12645,
+      "groundedness_score": 1,
+      "citation_accuracy_score": 1,
+      "notes": "Mostly correct, but includes extra specifics that may go beyond the core source support."
+    },
+    {
+      "id": "q15",
+      "category": "pricing",
+      "question": "Do you offer discounts for bulk or wholesale orders?",
+      "gold_answer": "Yes, bulk and wholesale pricing or discounts are available for larger orders.",
+      "answer": "The FAQ mentions a 15% discount for orders of 3 or more books, and mentions potentially higher savings for larger quantities (Source 1 and 3). The pricing guide lists discounts for bulk orders (Source 2) and offers volume discounts with specific ranges (Source 2). However, the exact eligibility for bulk or wholesale orders is not clearly detailed in the provided sources. I could not find a definitive answer confirming discounts for bulk or wholesale orders.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Pricing and Payment > Are there any discounts?",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Volume Discounts > Bulk Order Pricing (Schools/Organizations)",
+        "Contact Information v1.0 (2026-02-22) – Contact Information and Customer Support > Department-Specific Contacts > Wholesale and Bulk Orders",
+        "Wholesale Bulk Orders v1.0 (2026-02-22) – Wholesale and Bulk Orders Guide > Bulk Pricing Structure > Format Pricing",
+        "Wholesale Bulk Orders v1.0 (2026-02-22) – Wholesale and Bulk Orders Guide > Frequently Asked Questions"
+      ],
+      "allowed": true,
+      "best_distance": 0.3640308976173401,
+      "latency_ms": 936,
+      "groundedness_score": 1,
+      "citation_accuracy_score": 1,
+      "notes": "Sources appear to support discounts, but the answer becomes hesitant and partially under-answers."
+    },
+    {
+      "id": "q16",
+      "category": "pricing",
+      "question": "Is there a discount for ordering multiple books?",
+      "gold_answer": "Yes, the company offers bulk or multi-book discounts in certain cases.",
+      "answer": "Yes, there are discounts for ordering multiple books. According to the sources:\n\n- **Bulk discount:** 15% off when ordering 3+ books\n- **Multi-book discounts** are available based on quantity:\n  - 2 books: 10% off\n  - 3-5 books: 15% off\n  - 6-10 books: 20% off\n  - 11+ books: 25% off\n\nAdditionally, there are volume discounts for larger orders (25+ books) with savings up to 40% or more.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Pricing and Payment > Are there any discounts?",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Volume Discounts > Bulk Order Pricing (Schools/Organizations)",
+        "Pricing Guide v1.0 (2026-02-22) – Pricing Guide and Package Comparison > Volume Discounts > Multi-Book Discounts",
+        "Wholesale Bulk Orders v1.0 (2026-02-22) – Wholesale and Bulk Orders Guide > Bulk Pricing Structure > Volume Discounts",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Pricing and Payment > How much do books cost?"
+      ],
+      "allowed": true,
+      "best_distance": 0.33113962411880493,
+      "latency_ms": 36039,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Good answer with directly supporting sources."
+    },
+    {
+      "id": "q17",
+      "category": "customization",
+      "question": "Can customers customize the story theme of the book?",
+      "gold_answer": "Yes, customers can choose from multiple story themes and customization options.",
+      "answer": "Custom children's books can be customized within existing themes based on customer input. The catalog explains they can adapt themes for specific situations, while FAQs mention contacting representatives for personalized adjustments. You can customize stories with your child's name, photos, and preferences.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Story Themes > Can I request a custom story theme?",
+        "Story Theme Catalog v1.0 (2026-02-22) – Story Theme Catalog > Custom Theme Requests",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > General Questions > What is Custom Children's Books?",
+        "Story Customization Guide v1.0 (2026-02-22) – Story Customization Guide > Questions About Customization?",
+        "Corpus Documentation v1.0 (2026-02-22) – Corpus Documentation > Business Description"
+      ],
+      "allowed": true,
+      "best_distance": 0.35265809297561646,
+      "latency_ms": 559,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 1,
+      "notes": "Answer is acceptable, but some citations are broad rather than specific."
+    },
+    {
+      "id": "q18",
+      "category": "customization",
+      "question": "Can I personalize the book using my child's name and photo?",
+      "gold_answer": "Yes, personalization includes using the child's name and photo if provided.",
+      "answer": "Yes. Custom Children’s Books lets you embed your child’s name directly into the story and upload a photo that is integrated into the illustrations. These capabilities are described in the Terms of Service (2.1 What We Provide) and the Photo Upload Policy guidance for submitting photos. The service uses the name and photo solely to personalize the book and does not employ them for any other purpose.",
+      "citations": [
+        "Photo Upload Policy v1.0 (2026-02-22) – Photo Upload and Image Policy > Photo Submission Guidelines > Questions About Photos?",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 2. Service Description > 2.1 What We Provide",
+        "Gift Giving Guide v1.0 (2026-02-22) – Gift Giving Guide > Ordering as a Gift > Getting Photos from Parents",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > How We Use Information > Children's Information",
+        "Corpus Documentation v1.0 (2026-02-22) – Corpus Documentation > Business Description"
+      ],
+      "allowed": true,
+      "best_distance": 0.3383074402809143,
+      "latency_ms": 3253,
+      "groundedness_score": 1,
+      "citation_accuracy_score": 1,
+      "notes": "Main claim is correct, but the final sentence may be too strong without exact policy wording."
+    },
+    {
+      "id": "q19",
+      "category": "account",
+      "question": "Do I need an account to place an order?",
+      "gold_answer": "Policies or FAQ indicate whether checkout can be done as a guest or with an account.",
+      "answer": "Yes, you need to create a free account to place an order. This is required for saving customizations, tracking orders, and accessing digital books.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Ordering and Account > Do I need an account to order?",
+        "Account Management Guide v1.0 (2026-02-22) – Account Management Guide > Creating Your Account > Account Benefits",
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Miscellaneous > Do you have a referral program?",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 1. Acceptance of Terms > 1.1 Eligibility",
+        "Troubleshooting Guide v1.0 (2026-02-22) – Troubleshooting Guide > Order and Payment Issues > Problem: \"Can't find my order\""
+      ],
+      "allowed": true,
+      "best_distance": 0.2773498296737671,
+      "latency_ms": 11679,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Answer appears clear and supported by the cited FAQ/account docs."
+    },
+    {
+      "id": "q20",
+      "category": "account",
+      "question": "How can I delete my account?",
+      "gold_answer": "Account deletion can be requested through account settings or by contacting support, depending on the policy.",
+      "answer": "To delete your account, you have two options:\n\n1. Through your account settings:\n   - Go to \"Account Settings\" → Privacy\n   - Select \"Request Account Deletion\"\n   - Confirm your decision (irreversible)\n   - Verify your identity (password or email)\n   - Your account will be deleted within 7 business days\n\n2. By email:\n   - Email support@customkidsbooks.com to request account closure\n   - Note that outstanding orders will be fulfilled unless cancelled",
+      "citations": [
+        "Account Management Guide v1.0 (2026-02-22) – Account Management Guide > Account Deletion > Requesting Deletion",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Parental Consent and Control > How to Request Child Data Deletion",
+        "Account Management Guide v1.0 (2026-02-22) – Account Management Guide > Account Best Practices > Organization Tips",
+        "Privacy Policy v1.0 (2026-02-22) – Privacy Policy - Custom Children's Books > Your Privacy Rights > All Users",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 14. Termination > 14.1 Termination by You"
+      ],
+      "allowed": true,
+      "best_distance": 0.30604398250579834,
+      "latency_ms": 22841,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Detailed and well supported."
+    },
+    {
+      "id": "q21",
+      "category": "quality",
+      "question": "What should I do if my book arrives damaged or defective?",
+      "gold_answer": "Customers should contact support and may be eligible for replacement, refund, or other resolution.",
+      "answer": "Contact within 7 days with order number and photos; resolved via replacement/refund.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Production and Delivery > What if my book is lost or damaged in shipping?",
+        "Quality Standards v1.0 (2026-02-22) – Quality Standards and Production Process > Customer Quality Feedback > How to Report Issues",
+        "Shipping Delivery Policy v1.0 (2026-02-22) – Shipping and Delivery Policy > Delivery Problems and Solutions > Damaged Package",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Damaged Items > Damage During Shipping",
+        "Terms of Service v1.0 (2026-02-22) – Terms of Service - Custom Children's Books > 8. Returns and Refunds > 8.2 Physical Books"
+      ],
+      "allowed": true,
+      "best_distance": 0.24574953317642212,
+      "latency_ms": 3091,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Concise and supported."
+    },
+    {
+      "id": "q22",
+      "category": "quality",
+      "question": "What quality standards are used for printing and production?",
+      "gold_answer": "The company describes standards for materials, print quality, and production review.",
+      "answer": "Quality standards for printing and production include:\n\nColor Management:\n- Calibrated printers with ICC color profiles\n- ±5% color variation (industry standard)\n- Consistent color matching within each book\n\nPrint Quality Standards:\n- Softcover: 100 lb gloss text paper, 10pt C1S cover\n- Hardcover: 100 lb gloss text paper, 80pt board cover\n- Premium: 120 lb gloss text paper, 98pt board cover\n- All books use glossy finish\n\nInk Quality:\n- HP Indigo digital press with 6-color process\n- Fade-resistant, non-toxic, child-safe inks\n- CPSIA compliant and meets US safety standards\n\nQuality Checks:\n- Automated inspection for color density, registration, defects\n- Manual inspection for visual quality, color accuracy, image clarity, text readability",
+      "citations": [
+        "Quality Standards v1.0 (2026-02-22) – Quality Standards and Production Process > Stage 4: Printing > Color Management",
+        "Quality Standards v1.0 (2026-02-22) – Quality Standards and Production Process > Stage 4: Printing > Print Quality Standards",
+        "Quality Standards v1.0 (2026-02-22) – Quality Standards and Production Process > Material Specifications > Ink Quality",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Quality Guarantee > Our Commitment",
+        "Quality Standards v1.0 (2026-02-22) – Quality Standards and Production Process > Stage 4: Printing > Print Quality Checks"
+      ],
+      "allowed": true,
+      "best_distance": 0.3631669878959656,
+      "latency_ms": 26441,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Detailed but clearly grounded in the quality standards docs."
+    },
+    {
+      "id": "q23",
+      "category": "support",
+      "question": "How can I contact customer support?",
+      "gold_answer": "Customers can contact support using the published email addresses, forms, or support contact channels.",
+      "answer": "You can contact customer support through multiple channels:\n\n**Primary Contact:**\n- Email: support@customkidsbooks.com\n- Phone: 1-800-KIDBOOK\n\n**Department-Specific Contacts:**\n- Technical Support: tech@customkidsbooks.com (option 4 when calling)\n- Returns and Refunds: returns@customkidsbooks.com (option 2 when calling)\n\nWhen contacting support, please include your name, email address, order number (if applicable), and a detailed description of your issue.",
+      "citations": [
+        "FAQ v1.0 (2026-02-22) – Frequently Asked Questions (FAQ) > Customer Support > What information should I include when contacting support?",
+        "Troubleshooting Guide v1.0 (2026-02-22) – Troubleshooting Guide > Still Need Help? > When Contacting Support, Include:",
+        "Return Refund Policy v1.0 (2026-02-22) – Return and Refund Policy > Dispute Resolution > If You're Unsatisfied",
+        "Contact Information v1.0 (2026-02-22) – Contact Information and Customer Support > Department-Specific Contacts > Technical Support",
+        "Contact Information v1.0 (2026-02-22) – Contact Information and Customer Support > Department-Specific Contacts > Returns and Refunds"
+      ],
+      "allowed": true,
+      "best_distance": 0.42724859714508057,
+      "latency_ms": 14859,
+      "groundedness_score": 1,
+      "citation_accuracy_score": 1,
+      "notes": "Likely mostly correct, but 'primary contact' may not be explicitly supported by the listed citations."
+    },
+    {
+      "id": "q24",
+      "category": "out_of_scope",
+      "question": "What is my name?",
+      "gold_answer": "The system should refuse because this is outside the policy documents.",
+      "answer": "I could not find a reliable answer to that in the policy documents.",
+      "citations": [],
+      "allowed": false,
+      "best_distance": 0.6513347625732422,
+      "latency_ms": 46,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Correct refusal for out-of-scope question."
+    },
+    {
+      "id": "q25",
+      "category": "out_of_scope",
+      "question": "What is the weather today in Toronto?",
+      "gold_answer": "The system should refuse because this is outside the policy documents.",
+      "answer": "I could not find a reliable answer to that in the policy documents.",
+      "citations": [],
+      "allowed": false,
+      "best_distance": 0.7148584127426147,
+      "latency_ms": 8,
+      "groundedness_score": 2,
+      "citation_accuracy_score": 2,
+      "notes": "Correct refusal for out-of-scope question."
+    }
+  ],
+  "summary": {
+    "total_questions": 25,
+    "allowed_answers": 23,
+    "refused_answers": 2,
+    "latency_ms": {
+      "mean": 8464.68,
+      "median": 3806,
+      "p50": 3806.0,
+      "p95": 25721.0,
+      "min": 8,
+      "max": 36039
+    }
+  }
+}

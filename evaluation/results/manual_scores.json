@@ -1,0 +1,152 @@
+[
+  {
+    "id": "q01",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Answer is supported, but several extra citations are unnecessary."
+  },
+  {
+    "id": "q02",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Main answer is correct; citation list is broader than needed."
+  },
+  {
+    "id": "q03",
+    "groundedness_score": 1,
+    "citation_accuracy_score": 2,
+    "notes": "Answer is mostly supported but over-detailed compared with the gold answer."
+  },
+  {
+    "id": "q04",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Answer is correct; only the first citation is really central."
+  },
+  {
+    "id": "q05",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Good concise answer and relevant citations."
+  },
+  {
+    "id": "q06",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Answer is supported; one or two citations are unnecessary."
+  },
+  {
+    "id": "q07",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Strong answer and citations directly support the claim."
+  },
+  {
+    "id": "q08",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Answer is correct, but return-policy citation is not needed."
+  },
+  {
+    "id": "q09",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Correct answer; only the photo policy citation is really needed."
+  },
+  {
+    "id": "q10",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Detailed answer is well supported by the cited policy passages."
+  },
+  {
+    "id": "q11",
+    "groundedness_score": 1,
+    "citation_accuracy_score": 2,
+    "notes": "Answer says blurry or dark photos cannot be used; docs more naturally support 'may be rejected.' Slightly overstated."
+  },
+  {
+    "id": "q12",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Strong answer and strong supporting citations."
+  },
+  {
+    "id": "q13",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Short but supported answer."
+  },
+  {
+    "id": "q14",
+    "groundedness_score": 1,
+    "citation_accuracy_score": 1,
+    "notes": "Mostly correct, but includes extra specifics that may go beyond the core source support."
+  },
+  {
+    "id": "q15",
+    "groundedness_score": 1,
+    "citation_accuracy_score": 1,
+    "notes": "Sources appear to support discounts, but the answer becomes hesitant and partially under-answers."
+  },
+  {
+    "id": "q16",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Good answer with directly supporting sources."
+  },
+  {
+    "id": "q17",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 1,
+    "notes": "Answer is acceptable, but some citations are broad rather than specific."
+  },
+  {
+    "id": "q18",
+    "groundedness_score": 1,
+    "citation_accuracy_score": 1,
+    "notes": "Main claim is correct, but the final sentence may be too strong without exact policy wording."
+  },
+  {
+    "id": "q19",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Answer appears clear and supported by the cited FAQ/account docs."
+  },
+  {
+    "id": "q20",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Detailed and well supported."
+  },
+  {
+    "id": "q21",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Concise and supported."
+  },
+  {
+    "id": "q22",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Detailed but clearly grounded in the quality standards docs."
+  },
+  {
+    "id": "q23",
+    "groundedness_score": 1,
+    "citation_accuracy_score": 1,
+    "notes": "Likely mostly correct, but 'primary contact' may not be explicitly supported by the listed citations."
+  },
+  {
+    "id": "q24",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Correct refusal for out-of-scope question."
+  },
+  {
+    "id": "q25",
+    "groundedness_score": 2,
+    "citation_accuracy_score": 2,
+    "notes": "Correct refusal for out-of-scope question."
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "q01",
+    "category": "returns",
+    "question": "What is the return policy for unopened books?",
+    "gold_answer": "Unopened books may be returned within 14 days of delivery if they are in original condition, usually with a restocking fee."
+  },
+  {
+    "id": "q02",
+    "category": "returns",
+    "question": "Are opened books eligible for return?",
+    "gold_answer": "Opened books are generally not returnable, though exceptions may be handled case by case."
+  },
+  {
+    "id": "q03",
+    "category": "returns",
+    "question": "How long does it take to process a refund?",
+    "gold_answer": "Approved refunds are typically processed within 5 to 7 business days."
+  },
+  {
+    "id": "q04",
+    "category": "returns",
+    "question": "Are digital books refundable after download?",
+    "gold_answer": "Digital books are generally non-refundable once downloaded, except for technical or content issues."
+  },
+  {
+    "id": "q05",
+    "category": "shipping",
+    "question": "Do you ship internationally?",
+    "gold_answer": "Yes, international shipping is available to many countries."
+  },
+  {
+    "id": "q06",
+    "category": "shipping",
+    "question": "How long does international shipping usually take?",
+    "gold_answer": "International delivery typically takes about 7 to 21 business days depending on region."
+  },
+  {
+    "id": "q07",
+    "category": "shipping",
+    "question": "Who is responsible for customs fees on international orders?",
+    "gold_answer": "Customers are generally responsible for customs duties or import fees."
+  },
+  {
+    "id": "q08",
+    "category": "shipping",
+    "question": "Do you offer free shipping?",
+    "gold_answer": "Free shipping may be available under specific order thresholds or promotions."
+  },
+  {
+    "id": "q09",
+    "category": "photos",
+    "question": "What file types are accepted for photo uploads?",
+    "gold_answer": "Accepted formats include common image types such as JPG, JPEG, PNG, and possibly HEIC."
+  },
+  {
+    "id": "q10",
+    "category": "photos",
+    "question": "What are the minimum quality requirements for uploaded photos?",
+    "gold_answer": "Photos should be clear, high resolution, well lit, and show the child's face clearly."
+  },
+  {
+    "id": "q11",
+    "category": "photos",
+    "question": "Can blurry or dark photos be used?",
+    "gold_answer": "Blurry, dark, or low-quality photos are generally discouraged or may be rejected."
+  },
+  {
+    "id": "q12",
+    "category": "privacy",
+    "question": "How do you handle children's data under COPPA?",
+    "gold_answer": "The company states that it complies with COPPA by obtaining parental consent, limiting collection, and protecting children's information."
+  },
+  {
+    "id": "q13",
+    "category": "privacy",
+    "question": "Can parents request deletion of their child's data?",
+    "gold_answer": "Yes, parents may request review or deletion of their child's personal information."
+  },
+  {
+    "id": "q14",
+    "category": "privacy",
+    "question": "What personal information is collected to create a personalized book?",
+    "gold_answer": "The company collects only the information necessary to personalize and deliver the book."
+  },
+  {
+    "id": "q15",
+    "category": "pricing",
+    "question": "Do you offer discounts for bulk or wholesale orders?",
+    "gold_answer": "Yes, bulk and wholesale pricing or discounts are available for larger orders."
+  },
+  {
+    "id": "q16",
+    "category": "pricing",
+    "question": "Is there a discount for ordering multiple books?",
+    "gold_answer": "Yes, the company offers bulk or multi-book discounts in certain cases."
+  },
+  {
+    "id": "q17",
+    "category": "customization",
+    "question": "Can customers customize the story theme of the book?",
+    "gold_answer": "Yes, customers can choose from multiple story themes and customization options."
+  },
+  {
+    "id": "q18",
+    "category": "customization",
+    "question": "Can I personalize the book using my child's name and photo?",
+    "gold_answer": "Yes, personalization includes using the child's name and photo if provided."
+  },
+  {
+    "id": "q19",
+    "category": "account",
+    "question": "Do I need an account to place an order?",
+    "gold_answer": "Policies or FAQ indicate whether checkout can be done as a guest or with an account."
+  },
+  {
+    "id": "q20",
+    "category": "account",
+    "question": "How can I delete my account?",
+    "gold_answer": "Account deletion can be requested through account settings or by contacting support, depending on the policy."
+  },
+  {
+    "id": "q21",
+    "category": "quality",
+    "question": "What should I do if my book arrives damaged or defective?",
+    "gold_answer": "Customers should contact support and may be eligible for replacement, refund, or other resolution."
+  },
+  {
+    "id": "q22",
+    "category": "quality",
+    "question": "What quality standards are used for printing and production?",
+    "gold_answer": "The company describes standards for materials, print quality, and production review."
+  },
+  {
+    "id": "q23",
+    "category": "support",
+    "question": "How can I contact customer support?",
+    "gold_answer": "Customers can contact support using the published email addresses, forms, or support contact channels."
+  },
+  {
+    "id": "q24",
+    "category": "out_of_scope",
+    "question": "What is my name?",
+    "gold_answer": "The system should refuse because this is outside the policy documents."
+  },
+  {
+    "id": "q25",
+    "category": "out_of_scope",
+    "question": "What is the weather today in Toronto?",
+    "gold_answer": "The system should refuse because this is outside the policy documents."
+  }
+]
