@@ -34,3 +34,5 @@ pytest==8.0.0
 # OpenAi
 python-dotenv==1.0.0
 openai==1.10.0
+
+gunicorn==22.0.0

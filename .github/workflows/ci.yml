@@ -2,17 +2,15 @@ name: RAG Policy Assistant CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -26,9 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Verify project imports
+      - name: Verify imports
         run: |
           python -c "import src.rag.rag_pipeline"
+          python -c "import src.app.app"
 
       - name: Run tests
         run: |
