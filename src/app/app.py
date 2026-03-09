@@ -1,0 +1,67 @@
+from flask import Flask, jsonify, request, render_template
+import os
+import time
+from dotenv import load_dotenv
+from openai import OpenAI
+
+from src.rag.rag_pipeline import RagPipeline
+
+app = Flask(__name__)
+
+
+def create_pipeline():
+    load_dotenv()
+
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENROUTER_API_KEY not set")
+
+    model_name = os.getenv("OPENROUTER_MODEL")
+
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://openrouter.ai/api/v1",
+    )
+
+    return RagPipeline(llm_client=client, model_name=model_name)
+
+
+pipeline = create_pipeline()
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
+
+
+@app.route("/chat", methods=["POST"])
+def chat():
+
+    data = request.get_json()
+    question = data.get("question", "").strip()
+
+    if not question:
+        return jsonify({"error": "Missing question"}), 400
+
+    start = time.perf_counter()
+
+    result = pipeline.answer(question)
+
+    latency = int((time.perf_counter() - start) * 1000)
+
+    return jsonify(
+        {
+            "answer": result.answer,
+            "citations": result.citations,
+            "latency_ms": latency,
+        }
+    )
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

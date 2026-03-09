@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Kids Books – Policy Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">📚</div>
+        <div>
+          <h1>Custom Kids Books</h1>
+          <p>Policy Assistant</p>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h2>Try asking</h2>
+        <button class="sample-btn" onclick="setQuestion('What is the return policy for opened books?')">
+          Return policy for opened books
+        </button>
+        <button class="sample-btn" onclick="setQuestion('Do you ship internationally and how long does it take?')">
+          International shipping
+        </button>
+        <button class="sample-btn" onclick="setQuestion('What are the photo upload requirements?')">
+          Photo upload requirements
+        </button>
+      </div>
+    </aside>
+
+    <main class="chat-layout">
+      <header class="chat-header">
+        <div>
+          <h2>Ask about store policies</h2>
+          <p>Returns, shipping, personalization, privacy, and more</p>
+        </div>
+      </header>
+
+      <section id="chat-window" class="chat-window">
+        <div class="message assistant">
+          <div class="bubble">
+            Hi! I can answer questions about the Custom Kids Books policies and procedures.
+          </div>
+        </div>
+      </section>
+
+      <div id="error" class="error"></div>
+
+      <footer class="chat-input-area">
+        <textarea
+          id="question"
+          placeholder="Ask a question about shipping, returns, privacy, personalization..."
+        ></textarea>
+        <div class="chat-actions">
+          <button onclick="askQuestion()">Send</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
