@@ -10,14 +10,15 @@ load_dotenv()
 
 app = Flask(__name__)
 
+_pipeline = None
+
 
 def create_pipeline():
-    # Allow CI to run without API key
+    # Allow CI to run without API key or vector DB
     if os.getenv("CI") == "true":
         return RagPipeline(llm_client=None)
 
     api_key = os.getenv("OPENROUTER_API_KEY")
-
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY not set")
 
@@ -29,7 +30,11 @@ def create_pipeline():
     return RagPipeline(llm_client=client)
 
 
-pipeline = create_pipeline()
+def get_pipeline():
+    global _pipeline
+    if _pipeline is None:
+        _pipeline = create_pipeline()
+    return _pipeline
 
 
 @app.route("/")
@@ -51,7 +56,7 @@ def chat():
         return jsonify({"error": "Missing question"}), 400
 
     start = time.perf_counter()
-    result = pipeline.answer(question)
+    result = get_pipeline().answer(question)
     latency = int((time.perf_counter() - start) * 1000)
 
     return jsonify(
@@ -64,4 +69,4 @@ def chat():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000, debug=True)
