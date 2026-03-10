@@ -1,10 +1,9 @@
 from __future__ import annotations
 
-from openai import OpenAI
-from dotenv import load_dotenv
 import os
 
-
+from dotenv import load_dotenv
+from openai import OpenAI
 
 from src.rag.rag_pipeline import RagPipeline
 
@@ -16,7 +15,7 @@ def main() -> None:
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY is not set.")
 
-    model_name = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat-v3-0324:free")
+    model_name = os.getenv("OPENROUTER_MODEL", "openrouter/free")
 
     client = OpenAI(
         api_key=api_key,
@@ -45,8 +44,8 @@ def main() -> None:
 
         if result.citations:
             print("\nSources:")
-            for c in result.citations:
-                print(f"- {c}")
+            for citation in result.citations:
+                print(f"- {citation}")
 
         print("\n" + "-" * 80 + "\n")
 

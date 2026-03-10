@@ -14,7 +14,7 @@ _pipeline = None
 
 
 def create_pipeline():
-    # Allow CI to run without API key or vector DB
+    # Allow CI to run without API key or live LLM calls
     if os.getenv("CI") == "true":
         return RagPipeline(llm_client=None)
 
@@ -22,12 +22,14 @@ def create_pipeline():
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY not set")
 
+    model_name = os.getenv("OPENROUTER_MODEL", "openrouter/free")
+
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
         api_key=api_key,
     )
 
-    return RagPipeline(llm_client=client)
+    return RagPipeline(llm_client=client, model_name=model_name)
 
 
 def get_pipeline():
@@ -49,23 +51,26 @@ def health():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    data = request.get_json()
-    question = data.get("question", "").strip()
+    data = request.get_json() or {}
+    question = str(data.get("question", "")).strip()
 
     if not question:
         return jsonify({"error": "Missing question"}), 400
 
-    start = time.perf_counter()
-    result = get_pipeline().answer(question)
-    latency = int((time.perf_counter() - start) * 1000)
+    try:
+        start = time.perf_counter()
+        result = get_pipeline().answer(question)
+        latency = int((time.perf_counter() - start) * 1000)
 
-    return jsonify(
-        {
-            "answer": result.answer,
-            "citations": result.citations,
-            "latency_ms": latency,
-        }
-    )
+        return jsonify(
+            {
+                "answer": result.answer,
+                "citations": result.citations,
+                "latency_ms": latency,
+            }
+        )
+    except Exception as exc:
+        return jsonify({"error": str(exc)}), 500
 
 
 if __name__ == "__main__":
