@@ -34,9 +34,16 @@ class RagPipeline:
         llm_client: Optional[Any] = None,
         model_name: str = DEFAULT_MODEL_NAME,
     ) -> None:
-        self.rag_retriever = rag_retriever or RagRetriever()
         self.llm_client = llm_client
         self.model_name = model_name
+
+        # Only create the real retriever when needed
+        if rag_retriever is not None:
+            self.rag_retriever = rag_retriever
+        elif llm_client is None:
+            self.rag_retriever = None
+        else:
+            self.rag_retriever = RagRetriever()
 
     @staticmethod
     def system_prompt() -> str:
@@ -80,8 +87,6 @@ class RagPipeline:
         if self.llm_client is None:
             return "Mock response (CI mode)"
 
-        # Expected OpenAI-style interface:
-        # client.chat.completions.create(model=..., messages=[...])
         response = self.llm_client.chat.completions.create(
             model=self.model_name,
             messages=[
@@ -92,6 +97,16 @@ class RagPipeline:
         return response.choices[0].message.content.strip()
 
     def answer(self, question: str, k: Optional[int] = None) -> RagAnswer:
+        # CI / test mode: no retriever and no LLM
+        if self.rag_retriever is None:
+            return RagAnswer(
+                question=question,
+                answer="Mock response (CI mode)",
+                citations=[],
+                allowed=True,
+                best_distance=None,
+            )
+
         retrieval_result = self.rag_retriever.retrieve(question, k=k)
 
         if not retrieval_result.allowed:
