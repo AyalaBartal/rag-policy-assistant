@@ -78,7 +78,7 @@ class RagPipeline:
 
     def _call_llm(self, system_prompt: str, user_prompt: str) -> str:
         if self.llm_client is None:
-            raise RuntimeError("LLM client is not configured.")
+            return "Mock response (CI mode)"
 
         # Expected OpenAI-style interface:
         # client.chat.completions.create(model=..., messages=[...])

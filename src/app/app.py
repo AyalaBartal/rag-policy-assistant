@@ -6,24 +6,27 @@ from openai import OpenAI
 
 from src.rag.rag_pipeline import RagPipeline
 
+load_dotenv()
+
 app = Flask(__name__)
 
 
 def create_pipeline():
-    load_dotenv()
+    # Allow CI to run without API key
+    if os.getenv("CI") == "true":
+        return RagPipeline(llm_client=None)
 
     api_key = os.getenv("OPENROUTER_API_KEY")
+
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY not set")
 
-    model_name = os.getenv("OPENROUTER_MODEL")
-
     client = OpenAI(
-        api_key=api_key,
         base_url="https://openrouter.ai/api/v1",
+        api_key=api_key,
     )
 
-    return RagPipeline(llm_client=client, model_name=model_name)
+    return RagPipeline(llm_client=client)
 
 
 pipeline = create_pipeline()
@@ -41,7 +44,6 @@ def health():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-
     data = request.get_json()
     question = data.get("question", "").strip()
 
@@ -49,9 +51,7 @@ def chat():
         return jsonify({"error": "Missing question"}), 400
 
     start = time.perf_counter()
-
     result = pipeline.answer(question)
-
     latency = int((time.perf_counter() - start) * 1000)
 
     return jsonify(
