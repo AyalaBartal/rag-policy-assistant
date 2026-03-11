@@ -1,10 +1,9 @@
 from flask import Flask, jsonify, request, render_template
 import os
 import time
+
 from dotenv import load_dotenv
 from openai import OpenAI
-
-from src.rag.rag_pipeline import RagPipeline
 
 load_dotenv()
 
@@ -14,8 +13,10 @@ _pipeline = None
 
 
 def create_pipeline():
-    # Allow CI to run without API key or live LLM calls
+    from src.rag.rag_pipeline import RagPipeline
+
     if os.getenv("CI") == "true":
+        app.logger.info("CI mode: creating mock RagPipeline")
         return RagPipeline(llm_client=None)
 
     api_key = os.getenv("OPENROUTER_API_KEY")
@@ -24,18 +25,24 @@ def create_pipeline():
 
     model_name = os.getenv("OPENROUTER_MODEL", "openrouter/free")
 
+    app.logger.info("Creating OpenAI client")
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
         api_key=api_key,
     )
 
+    app.logger.info("Creating RagPipeline")
     return RagPipeline(llm_client=client, model_name=model_name)
 
 
 def get_pipeline():
     global _pipeline
     if _pipeline is None:
+        app.logger.info("Pipeline not initialized. Creating now...")
+        started = time.perf_counter()
         _pipeline = create_pipeline()
+        elapsed_ms = int((time.perf_counter() - started) * 1000)
+        app.logger.info(f"Pipeline created in {elapsed_ms} ms")
     return _pipeline
 
 
@@ -58,9 +65,15 @@ def chat():
         return jsonify({"error": "Missing question"}), 400
 
     try:
+        app.logger.info(f"Received /chat question: {question[:80]}")
         start = time.perf_counter()
-        result = get_pipeline().answer(question)
+
+        pipeline = get_pipeline()
+        app.logger.info("Calling pipeline.answer()")
+        result = pipeline.answer(question)
+
         latency = int((time.perf_counter() - start) * 1000)
+        app.logger.info(f"/chat completed in {latency} ms")
 
         return jsonify(
             {
@@ -70,6 +83,7 @@ def chat():
             }
         )
     except Exception as exc:
+        app.logger.exception("Chat request failed")
         return jsonify({"error": str(exc)}), 500
 
 
