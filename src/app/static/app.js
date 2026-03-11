@@ -85,7 +85,8 @@ async function askQuestion() {
     const data = await response.json();
 
     if (!response.ok) {
-      errorEl.textContent = data.error || "Something went wrong.";
+      errorEl.textContent =
+        data.error || "Server error while answering the question.";
       return;
     }
 
