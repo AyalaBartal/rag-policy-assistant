@@ -1,3 +1,5 @@
+let pipelineReady = false;
+
 function setQuestion(value) {
   document.getElementById("question").value = value;
 }
@@ -58,6 +60,87 @@ function appendAssistantMessage(answer, citations, latencyMs) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+async function checkHealth() {
+  const response = await fetch("/health");
+  return await response.json();
+}
+
+async function warmupPipeline() {
+  const errorEl = document.getElementById("error");
+  errorEl.textContent = "Assistant is warming up...";
+
+  const response = await fetch("/warmup", {
+    method: "POST"
+  });
+
+  const data = await response.json();
+
+  if (!response.ok && response.status !== 202) {
+    throw new Error(data.pipeline_error || data.error || "Warmup failed.");
+  }
+
+  if (data.pipeline_ready || data.status === "ready") {
+    pipelineReady = true;
+    errorEl.textContent = "";
+    return;
+  }
+
+  if (response.status === 202 || data.status === "loading") {
+    await waitUntilReady();
+    return;
+  }
+}
+
+async function waitUntilReady(maxAttempts = 60, delayMs = 5000) {
+  const errorEl = document.getElementById("error");
+
+  for (let i = 0; i < maxAttempts; i++) {
+    const health = await checkHealth();
+
+    if (health.pipeline_ready) {
+      pipelineReady = true;
+      errorEl.textContent = "";
+      return true;
+    }
+
+    if (health.pipeline_error) {
+      errorEl.textContent = `Pipeline error: ${health.pipeline_error}`;
+      return false;
+    }
+
+    errorEl.textContent = "Assistant is warming up...";
+    await new Promise(resolve => setTimeout(resolve, delayMs));
+  }
+
+  errorEl.textContent = "Warmup is taking longer than expected. Please try again.";
+  return false;
+}
+
+async function ensurePipelineReady() {
+  if (pipelineReady) {
+    return true;
+  }
+
+  try {
+    const health = await checkHealth();
+
+    if (health.pipeline_ready) {
+      pipelineReady = true;
+      return true;
+    }
+
+    await warmupPipeline();
+
+    const finalHealth = await checkHealth();
+    pipelineReady = !!finalHealth.pipeline_ready;
+    return pipelineReady;
+  } catch (err) {
+    document.getElementById("error").textContent =
+      err.message || "Unable to warm up the assistant.";
+    return false;
+  }
+}
+
 async function askQuestion() {
   const input = document.getElementById("question");
   const errorEl = document.getElementById("error");
@@ -67,6 +150,11 @@ async function askQuestion() {
 
   if (!question) {
     errorEl.textContent = "Please enter a question.";
+    return;
+  }
+
+  const ready = await ensurePipelineReady();
+  if (!ready) {
     return;
   }
 
@@ -93,6 +181,7 @@ async function askQuestion() {
     appendAssistantMessage(data.answer, data.citations, data.latency_ms);
   } catch (err) {
     errorEl.textContent = "Unable to contact the assistant right now.";
+    console.error(err);
   }
 }
 

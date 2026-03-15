@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 import os
 import time
-import threading
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -35,35 +34,6 @@ def create_pipeline():
     return RagPipeline(llm_client=client, model_name=model_name)
 
 
-def warm_pipeline():
-    global _pipeline, _pipeline_error, _pipeline_loading
-
-    if _pipeline is not None or _pipeline_loading:
-        return
-
-    _pipeline_loading = True
-    try:
-        app.logger.info("Warming pipeline in background...")
-        started = time.perf_counter()
-        _pipeline = create_pipeline()
-        elapsed_ms = int((time.perf_counter() - started) * 1000)
-        app.logger.info(f"Pipeline warmed in {elapsed_ms} ms")
-    except Exception as exc:
-        _pipeline_error = str(exc)
-        app.logger.exception("Pipeline warm-up failed")
-    finally:
-        _pipeline_loading = False
-
-
-def get_pipeline():
-    global _pipeline
-
-    if _pipeline is None and not _pipeline_loading:
-        warm_pipeline()
-
-    return _pipeline
-
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -81,6 +51,66 @@ def health():
     )
 
 
+@app.route("/warmup", methods=["POST"])
+def warmup():
+    global _pipeline, _pipeline_error, _pipeline_loading
+
+    if _pipeline is not None:
+        return jsonify(
+            {
+                "status": "ready",
+                "pipeline_ready": True,
+                "pipeline_loading": False,
+                "pipeline_error": None,
+            }
+        )
+
+    if _pipeline_loading:
+        return jsonify(
+            {
+                "status": "loading",
+                "pipeline_ready": False,
+                "pipeline_loading": True,
+                "pipeline_error": _pipeline_error,
+            }
+        ), 202
+
+    _pipeline_loading = True
+    _pipeline_error = None
+
+    try:
+        app.logger.info("Starting synchronous pipeline warmup...")
+        started = time.perf_counter()
+
+        _pipeline = create_pipeline()
+
+        elapsed_ms = int((time.perf_counter() - started) * 1000)
+        app.logger.info(f"Pipeline warmed in {elapsed_ms} ms")
+
+        return jsonify(
+            {
+                "status": "ready",
+                "pipeline_ready": True,
+                "pipeline_loading": False,
+                "pipeline_error": None,
+                "warmup_ms": elapsed_ms,
+            }
+        )
+    except Exception as exc:
+        _pipeline_error = str(exc)
+        app.logger.exception("Pipeline warm-up failed")
+        return jsonify(
+            {
+                "status": "error",
+                "pipeline_ready": False,
+                "pipeline_loading": False,
+                "pipeline_error": _pipeline_error,
+            }
+        ), 500
+    finally:
+        _pipeline_loading = False
+
+
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json() or {}
@@ -89,18 +119,16 @@ def chat():
     if not question:
         return jsonify({"error": "Missing question"}), 400
 
-    pipeline = get_pipeline()
-
-    if pipeline is None:
+    if _pipeline is None:
         return jsonify(
             {
-                "error": "Assistant is still warming up. Please try again in 30-60 seconds."
+                "error": "Assistant is not ready yet. Please wait for warmup to finish."
             }
         ), 503
 
     try:
         start = time.perf_counter()
-        result = pipeline.answer(question)
+        result = _pipeline.answer(question)
         latency = int((time.perf_counter() - start) * 1000)
 
         return jsonify(
@@ -113,14 +141,6 @@ def chat():
     except Exception as exc:
         app.logger.exception("Chat request failed")
         return jsonify({"error": str(exc)}), 500
-
-
-def start_background_warmup():
-    thread = threading.Thread(target=warm_pipeline, daemon=True)
-    thread.start()
-
-
-start_background_warmup()
 
 
 if __name__ == "__main__":
