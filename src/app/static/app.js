@@ -60,9 +60,23 @@ function appendAssistantMessage(answer, citations, latencyMs) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+async function safeJson(response) {
+  const text = await response.text();
+
+  if (!text) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    throw new Error(`Server returned non-JSON response: ${text.slice(0, 200)}`);
+  }
+}
+
 async function checkHealth() {
   const response = await fetch("/health");
-  return await response.json();
+  return await safeJson(response);
 }
 
 async function warmupPipeline() {
@@ -73,7 +87,7 @@ async function warmupPipeline() {
     method: "POST"
   });
 
-  const data = await response.json();
+  const data = await safeJson(response);
 
   if (!response.ok && response.status !== 202) {
     throw new Error(data.pipeline_error || data.error || "Warmup failed.");
@@ -170,7 +184,7 @@ async function askQuestion() {
       body: JSON.stringify({ question })
     });
 
-    const data = await response.json();
+    const data = await safeJson(response);
 
     if (!response.ok) {
       errorEl.textContent =
@@ -180,7 +194,7 @@ async function askQuestion() {
 
     appendAssistantMessage(data.answer, data.citations, data.latency_ms);
   } catch (err) {
-    errorEl.textContent = "Unable to contact the assistant right now.";
+    errorEl.textContent = err.message || "Unable to contact the assistant right now.";
     console.error(err);
   }
 }
