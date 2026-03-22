@@ -56,6 +56,6 @@ evaluation_results/
 *.pkl
 *.pickle
 
-vectorstore/
+# vectorstore/ - committed for deployment
 
 .pytest_cache/
