@@ -1,6 +1,11 @@
-from flask import Flask, jsonify, request, render_template
 import os
+import sys
 import time
+import threading
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from flask import Flask, jsonify, request, render_template
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -78,37 +83,30 @@ def warmup():
     _pipeline_loading = True
     _pipeline_error = None
 
-    try:
-        app.logger.info("Starting synchronous pipeline warmup...")
-        started = time.perf_counter()
+    def _load():
+        global _pipeline, _pipeline_error, _pipeline_loading
+        try:
+            app.logger.info("Starting background pipeline warmup...")
+            started = time.perf_counter()
+            _pipeline = create_pipeline()
+            elapsed_ms = int((time.perf_counter() - started) * 1000)
+            app.logger.info(f"Pipeline warmed in {elapsed_ms} ms")
+        except Exception as exc:
+            _pipeline_error = str(exc)
+            app.logger.exception("Pipeline warm-up failed")
+        finally:
+            _pipeline_loading = False
 
-        _pipeline = create_pipeline()
+    threading.Thread(target=_load, daemon=True).start()
 
-        elapsed_ms = int((time.perf_counter() - started) * 1000)
-        app.logger.info(f"Pipeline warmed in {elapsed_ms} ms")
-
-        return jsonify(
-            {
-                "status": "ready",
-                "pipeline_ready": True,
-                "pipeline_loading": False,
-                "pipeline_error": None,
-                "warmup_ms": elapsed_ms,
-            }
-        )
-    except Exception as exc:
-        _pipeline_error = str(exc)
-        app.logger.exception("Pipeline warm-up failed")
-        return jsonify(
-            {
-                "status": "error",
-                "pipeline_ready": False,
-                "pipeline_loading": False,
-                "pipeline_error": _pipeline_error,
-            }
-        ), 500
-    finally:
-        _pipeline_loading = False
+    return jsonify(
+        {
+            "status": "loading",
+            "pipeline_ready": False,
+            "pipeline_loading": True,
+            "pipeline_error": None,
+        }
+    ), 202
 
 
 @app.route("/chat", methods=["POST"])

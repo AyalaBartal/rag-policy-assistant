@@ -60,6 +60,19 @@ function appendAssistantMessage(answer, citations, latencyMs) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+function appendThinking() {
+  const chatWindow = document.getElementById("chat-window");
+  const wrapper = document.createElement("div");
+  wrapper.className = "message assistant";
+  const bubble = document.createElement("div");
+  bubble.className = "bubble thinking";
+  bubble.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+  wrapper.appendChild(bubble);
+  chatWindow.appendChild(wrapper);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  return wrapper;
+}
+
 async function safeJson(response) {
   const text = await response.text();
 
@@ -175,6 +188,8 @@ async function askQuestion() {
   appendUserMessage(question);
   input.value = "";
 
+  const thinking = appendThinking();
+
   try {
     const response = await fetch("/chat", {
       method: "POST",
@@ -187,13 +202,16 @@ async function askQuestion() {
     const data = await safeJson(response);
 
     if (!response.ok) {
+      thinking.remove();
       errorEl.textContent =
         data.error || "Server error while answering the question.";
       return;
     }
 
+    thinking.remove();
     appendAssistantMessage(data.answer, data.citations, data.latency_ms);
   } catch (err) {
+    thinking.remove();
     errorEl.textContent = err.message || "Unable to contact the assistant right now.";
     console.error(err);
   }
