@@ -40,7 +40,8 @@ env/
 # Database
 *.db
 *.sqlite
-*.sqlite3
+# vectorstore sqlite is needed for deployment
+!vectorstore/chroma.sqlite3
 chroma_db/
 vector_store/
 
