@@ -24,6 +24,9 @@ python-dotenv==1.0.0
 # Token utilities
 tiktoken==0.6.0
 
+# Numpy (chromadb 0.4.x needs numpy <2)
+numpy<2
+
 # Testing
 pytest==8.0.0
 
