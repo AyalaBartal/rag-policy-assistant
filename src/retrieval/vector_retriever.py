@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 
 import chromadb
 from chromadb.config import Settings
-from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
 VECTORSTORE_DIR = Path("vectorstore")
 COLLECTION_NAME = "policy_chunks"
@@ -13,9 +12,9 @@ COLLECTION_NAME = "policy_chunks"
 
 class Retriever:
     def __init__(self) -> None:
-        self.ef = SentenceTransformerEmbeddingFunction(
-            model_name="all-MiniLM-L6-v2",
-        )
+        from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2
+
+        self.ef = ONNXMiniLM_L6_V2()
         self.client = chromadb.PersistentClient(
             path=str(VECTORSTORE_DIR),
             settings=Settings(anonymized_telemetry=False),

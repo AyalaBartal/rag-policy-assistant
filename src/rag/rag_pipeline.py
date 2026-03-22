@@ -94,7 +94,7 @@ class RagPipeline:
                 {"role": "user", "content": user_prompt},
             ],
         )
-        return response.choices[0].message.content.strip()
+        return response.choices[0].message.content.strip() if response.choices else "No response from the language model. Please try again."
 
     def answer(self, question: str, k: Optional[int] = None) -> RagAnswer:
         # CI / test mode: no retriever and no LLM
