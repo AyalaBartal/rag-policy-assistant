@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 
 import chromadb
 from chromadb.config import Settings
-from src.retrieval.embedding_model import get_embedding_model
+from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
 VECTORSTORE_DIR = Path("vectorstore")
 COLLECTION_NAME = "policy_chunks"
@@ -13,17 +13,21 @@ COLLECTION_NAME = "policy_chunks"
 
 class Retriever:
     def __init__(self) -> None:
+        self.ef = SentenceTransformerEmbeddingFunction(
+            model_name="all-MiniLM-L6-v2",
+        )
         self.client = chromadb.PersistentClient(
             path=str(VECTORSTORE_DIR),
             settings=Settings(anonymized_telemetry=False),
         )
-        self.collection = self.client.get_collection(COLLECTION_NAME)
-        self.model = get_embedding_model()
+        self.collection = self.client.get_collection(
+            COLLECTION_NAME,
+            embedding_function=self.ef,
+        )
 
     def search(self, query: str, k: int = 5) -> List[Dict[str, Any]]:
-        q_emb = self.model.encode([query], normalize_embeddings=True).tolist()[0]
         res = self.collection.query(
-            query_embeddings=[q_emb],
+            query_texts=[query],
             n_results=k,
             include=["documents", "metadatas", "distances"],
         )
