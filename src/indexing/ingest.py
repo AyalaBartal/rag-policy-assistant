@@ -5,7 +5,6 @@ from typing import List
 
 import chromadb
 from chromadb.config import Settings
-from sentence_transformers import SentenceTransformer
 
 from src.indexing.doc_loader import load_markdown_documents
 from src.indexing.section_splitter import split_markdown_into_sections
@@ -40,6 +39,7 @@ def ingest(recreate: bool = True) -> None:
             metadata={"hnsw:space": "cosine"},
         )
 
+    from sentence_transformers import SentenceTransformer
     model = SentenceTransformer(EMBED_MODEL_NAME)
 
     docs = load_markdown_documents()
