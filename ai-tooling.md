@@ -22,25 +22,44 @@ manually.
 
 ## AI Tools Used
 
-### ChatGPT
+### Kiro (AI IDE)
 
-ChatGPT was used as the primary AI assistant during development. It
+Kiro was used as the primary AI-powered development environment. It
 helped with:
 
--   generating Python scripts for the RAG pipeline
--   explaining how vector databases work
--   assisting with ChromaDB integration
--   helping design evaluation scripts
+-   scaffolding the full project structure
+-   generating Python code for the RAG pipeline, retrieval, and Flask app
+-   writing and reviewing tests
+-   explaining ChromaDB and sentence-transformer APIs
+-   suggesting architectural improvements
+-   debugging integration issues between modules
+
+Kiro's agentic features were particularly useful for generating the
+ingestion pipeline and the evaluation framework in a single pass.
+
+------------------------------------------------------------------------
+
+### ChatGPT
+
+ChatGPT was used as a supplementary AI assistant. It helped with:
+
+-   explaining how vector databases and embedding models work
+-   assisting with prompt design for the RAG system
 -   generating documentation files
--   improving prompts and system instructions
+-   improving system prompt wording and guardrail logic
+-   answering questions about OpenRouter API integration
 
-Examples of tasks where ChatGPT helped:
+------------------------------------------------------------------------
 
--   implementing retrieval logic
--   designing the evaluation framework
--   writing GitHub CI configuration
--   generating Markdown documentation
--   debugging Python errors
+### GitHub Copilot
+
+GitHub Copilot (inline code completion) was used throughout development
+in VS Code. It helped with:
+
+-   completing boilerplate code quickly
+-   suggesting correct method signatures for Flask, ChromaDB, and OpenAI
+-   autocompleting test assertions and fixture setups
+-   reducing typing effort for repetitive patterns
 
 ------------------------------------------------------------------------
 
