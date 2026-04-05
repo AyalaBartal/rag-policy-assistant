@@ -13,7 +13,7 @@
 
 - Environment variables configured via Render dashboard:
   - `OPENROUTER_API_KEY` — LLM API key (OpenRouter free tier)
-  - `OPENROUTER_MODEL` — `meta-llama/llama-3.1-8b-instruct:free`
+  - `OPENROUTER_MODEL` — `openai/gpt-oss-20b:free`
 - Automatic deployment on push to `main` branch (via GitHub Actions CI/CD)
 - Health check: `/health`
 

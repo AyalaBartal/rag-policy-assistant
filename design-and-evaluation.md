@@ -126,7 +126,7 @@ The application uses an LLM through **OpenRouter**.
 
 Model used:
 
-openrouter/free
+openai/gpt-oss-20b:free
 
 The prompt contains:
 
