@@ -14,7 +14,7 @@ class Retriever:
     def __init__(self) -> None:
         from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2
 
-        self.ef = ONNXMiniLM_L6_V2()
+        self.ef = ONNXMiniLM_L6_V2(preferred_providers=["CPUExecutionProvider"])
         self.client = chromadb.PersistentClient(
             path=str(VECTORSTORE_DIR),
             settings=Settings(anonymized_telemetry=False),
