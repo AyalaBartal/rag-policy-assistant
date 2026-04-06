@@ -141,5 +141,23 @@ def chat():
         return jsonify({"error": str(exc)}), 500
 
 
+# Auto-start warmup at module load so the pipeline is ready ASAP after any
+# worker restart, without blocking the health check endpoint.
+if os.getenv("CI") != "true":
+    _pipeline_loading = True
+    def _auto_load():
+        global _pipeline, _pipeline_error, _pipeline_loading
+        try:
+            app.logger.info("Auto-starting pipeline warmup...")
+            _pipeline = create_pipeline()
+            app.logger.info("Pipeline ready.")
+        except Exception as exc:
+            _pipeline_error = str(exc)
+            app.logger.exception("Pipeline auto-warmup failed")
+        finally:
+            _pipeline_loading = False
+    threading.Thread(target=_auto_load, daemon=True).start()
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
