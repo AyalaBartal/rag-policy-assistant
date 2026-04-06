@@ -56,7 +56,7 @@ class FakeChatCompletions:
     def __init__(self, content: str):
         self._content = content
 
-    def create(self, model, messages):
+    def create(self, model, messages, **kwargs):
         return FakeResponse(self._content)
 
 
