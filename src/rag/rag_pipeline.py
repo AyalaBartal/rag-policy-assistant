@@ -93,6 +93,7 @@ class RagPipeline:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
+            max_tokens=512,
         )
         return response.choices[0].message.content.strip() if response.choices else "No response from the language model. Please try again."
 

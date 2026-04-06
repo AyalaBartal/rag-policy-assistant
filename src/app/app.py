@@ -34,6 +34,7 @@ def create_pipeline():
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
         api_key=api_key,
+        timeout=28.0,  # Render proxy cuts at ~30s; fail fast with a clean error
     )
 
     return RagPipeline(llm_client=client, model_name=model_name)
