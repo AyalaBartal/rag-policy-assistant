@@ -6,6 +6,53 @@ A Retrieval-Augmented Generation (RAG) application that answers questions about 
 
 This application uses RAG to provide accurate, citation-backed answers to questions about company policies. It retrieves relevant policy sections from a Chroma vector database and generates grounded responses using an LLM via OpenRouter.
 
+## Architecture
+
+```mermaid
+flowchart TD
+    User(["👤 User"]):::user
+
+    subgraph WebApp["🌐 Web Application (Flask)"]
+        UI["Chat UI\n/index.html"]
+        ChatAPI["POST /chat"]
+        Health["GET /health"]
+    end
+
+    subgraph RAG["⚙️ RAG Pipeline"]
+        Embed["Embed Query\nONNX MiniLM-L6-v2"]
+        Retrieve["Top-k Retrieval\nChromaDB (k=5)"]
+        Threshold{"Distance\n≤ 0.55?"}
+        Prompt["Build Prompt\n+ Citations"]
+        LLM["LLM\ngpt-oss-20b via OpenRouter"]
+        Refuse["Refuse:\nOut of scope"]
+    end
+
+    subgraph Index["📚 Indexing (offline)"]
+        Corpus["19 Policy\nMarkdown Files"]
+        Chunk["Chunker\n500 tokens / 50 overlap"]
+        VectorDB[("ChromaDB\nvectorstore/")]
+    end
+
+    User -->|"asks question"| UI
+    UI --> ChatAPI
+    ChatAPI --> Embed
+    Embed --> Retrieve
+    Retrieve --> Threshold
+    Threshold -->|"yes"| Prompt
+    Threshold -->|"no"| Refuse
+    Prompt --> LLM
+    LLM -->|"answer + citations"| User
+    Refuse -->|"polite refusal"| User
+
+    Corpus --> Chunk
+    Chunk --> VectorDB
+    VectorDB --> Retrieve
+
+    classDef user fill:#6366f1,color:#fff,stroke:none
+    classDef refuse fill:#ef4444,color:#fff,stroke:none
+    class Refuse refuse
+```
+
 ## Features
 
 - Document ingestion and indexing with sentence-transformer embeddings (`all-MiniLM-L6-v2`)

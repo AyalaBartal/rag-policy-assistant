@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RAG Policy Assistant — Architecture</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 6px; color: #f8fafc; }
+    .subtitle { color: #94a3b8; font-size: 0.95rem; margin-bottom: 40px; }
+
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1100px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .box {
+      background: #1e293b;
+      border: 1.5px solid #334155;
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: center;
+      width: 180px;
+    }
+    .box .icon { font-size: 1.5rem; margin-bottom: 4px; }
+    .box .title { font-size: 0.88rem; font-weight: 600; color: #f1f5f9; }
+    .box .sub { font-size: 0.72rem; color: #94a3b8; margin-top: 2px; }
+
+    .box.accent-purple { border-color: #6366f1; background: #1e1b4b; }
+    .box.accent-blue   { border-color: #3b82f6; background: #172554; }
+    .box.accent-teal   { border-color: #14b8a6; background: #042f2e; }
+    .box.accent-red    { border-color: #ef4444; background: #450a0a; }
+    .box.accent-green  { border-color: #22c55e; background: #052e16; }
+
+    .arrow {
+      font-size: 1.4rem;
+      color: #475569;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 32px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 1100px;
+    }
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #1e293b;
+    }
+
+    .diamond-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .diamond {
+      width: 100px;
+      height: 100px;
+      background: #1e293b;
+      border: 1.5px solid #f59e0b;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .diamond-inner {
+      transform: rotate(-45deg);
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #fbbf24;
+      line-height: 1.3;
+    }
+    .fork-row {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .fork-branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .fork-label {
+      font-size: 0.68rem;
+      color: #94a3b8;
+      font-style: italic;
+    }
+    .down-arrow { font-size: 1.2rem; color: #475569; }
+
+    footer {
+      margin-top: 48px;
+      font-size: 0.75rem;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+<h1>RAG Policy Assistant</h1>
+<p class="subtitle">System Architecture — Custom Kids Books</p>
+
+<!-- INDEXING -->
+<div class="section-title">📚 Offline Indexing Pipeline</div>
+<div class="pipeline">
+  <div class="box accent-teal">
+    <div class="icon">📄</div>
+    <div class="title">19 Policy Docs</div>
+    <div class="sub">Markdown files<br/>corpus/</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-teal">
+    <div class="icon">✂️</div>
+    <div class="title">Chunker</div>
+    <div class="sub">500 tokens<br/>50 token overlap</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-teal">
+    <div class="icon">🔢</div>
+    <div class="title">Embeddings</div>
+    <div class="sub">ONNX MiniLM-L6-v2<br/>local / free</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-teal">
+    <div class="icon">🗄️</div>
+    <div class="title">ChromaDB</div>
+    <div class="sub">vectorstore/<br/>persistent</div>
+  </div>
+</div>
+
+<!-- QUERY PIPELINE -->
+<div class="section-title">⚡ Query Pipeline (per request)</div>
+<div class="pipeline">
+  <div class="box accent-purple">
+    <div class="icon">👤</div>
+    <div class="title">User</div>
+    <div class="sub">Chat UI<br/>POST /chat</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-blue">
+    <div class="icon">🔢</div>
+    <div class="title">Embed Query</div>
+    <div class="sub">MiniLM-L6-v2<br/>same model as index</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-blue">
+    <div class="icon">🔍</div>
+    <div class="title">Top-k Retrieval</div>
+    <div class="sub">ChromaDB<br/>k = 5 chunks</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="diamond-wrap">
+    <div class="diamond"><div class="diamond-inner">distance<br/>≤ 0.55?</div></div>
+    <div class="fork-row">
+      <div class="fork-branch">
+        <div class="fork-label">✅ in scope</div>
+        <div class="box accent-blue">
+          <div class="icon">📝</div>
+          <div class="title">Build Prompt</div>
+          <div class="sub">Inject chunks<br/>+ citations</div>
+        </div>
+        <div class="down-arrow">↓</div>
+        <div class="box accent-green">
+          <div class="icon">🤖</div>
+          <div class="title">LLM</div>
+          <div class="sub">gpt-oss-20b:free<br/>via OpenRouter</div>
+        </div>
+        <div class="down-arrow">↓</div>
+        <div class="box accent-purple">
+          <div class="icon">💬</div>
+          <div class="title">Answer + Citations</div>
+          <div class="sub">grounded response<br/>+ latency ms</div>
+        </div>
+      </div>
+      <div class="fork-branch">
+        <div class="fork-label">❌ out of scope</div>
+        <div class="box accent-red">
+          <div class="icon">🚫</div>
+          <div class="title">Refuse</div>
+          <div class="sub">"I can only answer<br/>about our policies"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INFRASTRUCTURE -->
+<div class="section-title">🚀 Infrastructure</div>
+<div class="pipeline">
+  <div class="box">
+    <div class="icon">🐙</div>
+    <div class="title">GitHub</div>
+    <div class="sub">Source code<br/>push/PR trigger</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box">
+    <div class="icon">⚙️</div>
+    <div class="title">GitHub Actions</div>
+    <div class="sub">Unit → Integration<br/>→ Smoke → Deploy</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-green">
+    <div class="icon">☁️</div>
+    <div class="title">Render</div>
+    <div class="sub">gunicorn --preload<br/>1 worker / 512MB</div>
+  </div>
+  <div class="arrow">→</div>
+  <div class="box accent-purple">
+    <div class="icon">🌐</div>
+    <div class="title">Live URL</div>
+    <div class="sub">rag-policy-assistant<br/>.onrender.com</div>
+  </div>
+</div>
+
+<footer>RAG Policy Assistant · Ayala Bartal · AI Engineering Project</footer>
+
+</body>
+</html>
